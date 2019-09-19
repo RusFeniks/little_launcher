@@ -1,0 +1,10 @@
+F:\Исходники\NORMLauncher\NORMLauncher\bin\Debug\NORMLauncher.exe.config
+F:\Исходники\NORMLauncher\NORMLauncher\bin\Debug\NORMLauncher.exe
+F:\Исходники\NORMLauncher\NORMLauncher\bin\Debug\NORMLauncher.pdb
+F:\Исходники\NORMLauncher\NORMLauncher\obj\Debug\NORMLauncher.MainForm.resources
+F:\Исходники\NORMLauncher\NORMLauncher\obj\Debug\NORMLauncher.Form2.resources
+F:\Исходники\NORMLauncher\NORMLauncher\obj\Debug\NORMLauncher.Properties.Resources.resources
+F:\Исходники\NORMLauncher\NORMLauncher\obj\Debug\NORMLauncher.csproj.GenerateResource.cache
+F:\Исходники\NORMLauncher\NORMLauncher\obj\Debug\NORMLauncher.csproj.CoreCompileInputs.cache
+F:\Исходники\NORMLauncher\NORMLauncher\obj\Debug\NORMLauncher.exe
+F:\Исходники\NORMLauncher\NORMLauncher\obj\Debug\NORMLauncher.pdb
