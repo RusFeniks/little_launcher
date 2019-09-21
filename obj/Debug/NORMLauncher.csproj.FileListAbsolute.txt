@@ -18,3 +18,13 @@ D:\Загрузки\little_launcher-master\little_launcher-master\obj\Debug\NTSD
 D:\Загрузки\little_launcher-master\little_launcher-master\obj\Debug\NTSDZ Launcher.pdb
 D:\Загрузки\little_launcher-master\little_launcher-master\obj\Debug\NORMLauncher.csprojAssemblyReference.cache
 D:\Загрузки\little_launcher-master\little_launcher-master\obj\Debug\NORMLauncher.csproj.CoreCompileInputs.cache
+E:\Documents\little_launcher\bin\Debug\NTSDZ Launcher.exe.config
+E:\Documents\little_launcher\bin\Debug\NTSDZ Launcher.exe
+E:\Documents\little_launcher\bin\Debug\NTSDZ Launcher.pdb
+E:\Documents\little_launcher\obj\Debug\NORMLauncher.csprojAssemblyReference.cache
+E:\Documents\little_launcher\obj\Debug\NORMLauncher.MainForm.resources
+E:\Documents\little_launcher\obj\Debug\NORMLauncher.Properties.Resources.resources
+E:\Documents\little_launcher\obj\Debug\NORMLauncher.csproj.GenerateResource.cache
+E:\Documents\little_launcher\obj\Debug\NORMLauncher.csproj.CoreCompileInputs.cache
+E:\Documents\little_launcher\obj\Debug\NTSDZ Launcher.exe
+E:\Documents\little_launcher\obj\Debug\NTSDZ Launcher.pdb

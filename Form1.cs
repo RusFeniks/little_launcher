@@ -19,7 +19,11 @@ namespace NORMLauncher
         string Game_Folder = Application.StartupPath;
         int db_animframe = 1;
 
+        bool launcher_update = false;
+        string launcher_update_link = "";
+
         string fileName = "";
+        string launcher_updater = "";
 
 
         public MainForm()
@@ -36,7 +40,8 @@ namespace NORMLauncher
 
         private void LD_Button_Click(object sender, EventArgs e)
         {
-            DownLoad_File("https://www.dropbox.com/s/54x99osl0sl6i5x/Launcher_Updater.exe?dl=1", "Launcher_Updater.exe", "launcher_update");
+            DownLoad_File(launcher_update_link, "launcher_update.exe");
+            DownLoad_File(launcher_updater, "updater.exe", "launcher_update");
         }
 
         private void YT_Button_Click(object sender, EventArgs e)
@@ -47,8 +52,9 @@ namespace NORMLauncher
 
         private void VK_Button_Click(object sender, EventArgs e)
         {
-            Uri VK_Link = new Uri("https://discord.gg/BPkYKDD");
-            Process.Start(VK_Link.ToString());
+            MessageBox.Show(launcher_update_link);
+            //Uri VK_Link = new Uri("https://discord.gg/BPkYKDD");
+            //Process.Start(VK_Link.ToString());
         }
 
         public void Folder_Button_Click(object sender, EventArgs e)
@@ -149,6 +155,8 @@ namespace NORMLauncher
                 MoveList_Button.Enabled = false;
             }
 
+            LD_Button.Enabled = launcher_update;
+
             GameVersion_Text.Text = Properties.Settings.Default.Game_Version;
 
             bool Connection = false;
@@ -166,13 +174,11 @@ namespace NORMLauncher
 
             if (Connection)
             {
-                LD_Button.Enabled = true;
                 VK_Button.Enabled = true;
                 YT_Button.Enabled = true;
             }
             else
             {
-                LD_Button.Enabled = false;
                 VK_Button.Enabled = false;
                 YT_Button.Enabled = false;
             }
@@ -290,8 +296,19 @@ namespace NORMLauncher
                 {
                     float game_version = Convert.ToSingle(Properties.Settings.Default.Game_Version);
                     float update_version = Convert.ToSingle(UpdatesXML.GetAttribute("version"));
-                    if(update_version > game_version)
+                    if (update_version > game_version)
                     {
+                        if (UpdatesXML.GetAttribute("updater") != null)
+                        {
+                            launcher_updater = UpdatesXML.GetAttribute("updater");
+                        }
+
+                        if (UpdatesXML.GetAttribute("launcher") != null)
+                        {
+                            launcher_update = true;
+                            launcher_update_link = UpdatesXML.GetAttribute("launcher");
+                        }
+                        
                         Update_Information = new List<string>();
                         Update_Information.Add(UpdatesXML.GetAttribute("url"));
                         Update_Information.Add(UpdatesXML.GetAttribute("version"));
@@ -348,7 +365,7 @@ namespace NORMLauncher
 
             if (Check_All())
             {
-                DownLoad_File("https://www.dropbox.com/s/egu9ycndf8crbz6/updates.xml?dl=1", "updates.xml", "updates_list");
+                DownLoad_File("https://www.dropbox.com/s/9muonzrrk3jxi9j/dgfgg.xml?dl=1", "updates.xml", "updates_list");
             }
         }
 
