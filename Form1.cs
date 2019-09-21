@@ -24,6 +24,7 @@ namespace NORMLauncher
 
         string fileName = "";
         string launcher_updater = "";
+        string xml_file = "https://www.dropbox.com/s/egu9ycndf8crbz6/updates.xml?dl=1";
 
 
         public MainForm()
@@ -40,7 +41,7 @@ namespace NORMLauncher
 
         private void LD_Button_Click(object sender, EventArgs e)
         {
-            DownLoad_File(launcher_update_link, "launcher_update.exe");
+            DownLoad_File(launcher_update_link, "Launcher_Update", "");
             DownLoad_File(launcher_updater, "updater.exe", "launcher_update");
         }
 
@@ -52,9 +53,8 @@ namespace NORMLauncher
 
         private void VK_Button_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(launcher_update_link);
-            //Uri VK_Link = new Uri("https://discord.gg/BPkYKDD");
-            //Process.Start(VK_Link.ToString());
+            Uri VK_Link = new Uri("https://discord.gg/BPkYKDD");
+            Process.Start(VK_Link.ToString());
         }
 
         public void Folder_Button_Click(object sender, EventArgs e)
@@ -127,6 +127,8 @@ namespace NORMLauncher
                 file.Close();
                 File.Delete("version");
             }
+
+            File.Delete("updater.exe"); //secretpenis
 
             if (Directory.Exists(Game_Folder + "\\NTSDZ"))
             {
@@ -252,10 +254,10 @@ namespace NORMLauncher
 
                 switch (download_type)
                 {
-                        case "launcher_update":
-                            Process.Start(fileName);
-                            Application.Exit();
-                            break;
+                    case "launcher_update":
+                        Process.Start(fileName);
+                        Application.Exit();
+                        break;
                     case "updates_list":
                         List_of_references = Creating_an_update_list();
                         Check_All();
@@ -271,6 +273,7 @@ namespace NORMLauncher
                         List_of_references.Remove(List_of_references.Last());
                         Downloading_updates_from_the_list();
                         break;
+                    default: break;
                 }
             } else
             {
@@ -365,7 +368,7 @@ namespace NORMLauncher
 
             if (Check_All())
             {
-                DownLoad_File("https://www.dropbox.com/s/9muonzrrk3jxi9j/dgfgg.xml?dl=1", "updates.xml", "updates_list");
+                DownLoad_File(xml_file, "updates.xml", "updates_list");
             }
         }
 
