@@ -41,8 +41,7 @@ namespace NORMLauncher
 
         private void LD_Button_Click(object sender, EventArgs e)
         {
-            DownLoad_File(launcher_update_link, "Launcher_Update", "");
-            DownLoad_File(launcher_updater, "updater.exe", "launcher_update");
+            DownLoad_File(launcher_update_link, "Laucher_Update", "launcher_update");
         }
 
         private void YT_Button_Click(object sender, EventArgs e)
@@ -255,6 +254,9 @@ namespace NORMLauncher
                 switch (download_type)
                 {
                     case "launcher_update":
+                        DownLoad_File(launcher_updater, "updater.exe", "updater_launch");
+                        break;
+                    case "updater_launch":
                         Process.Start(fileName);
                         Application.Exit();
                         break;
@@ -284,8 +286,8 @@ namespace NORMLauncher
 
         private void DownLoad_Changed(object sender, DownloadProgressChangedEventArgs e)
         {
-            Download_Bar.Value = Convert.ToInt32(e.BytesReceived);
-            bites_counter.Text = Math.Round(((float)Download_Bar.Value / 1024 / 1024), 2) + " / " + Math.Round(((float)Download_Bar.Maximum / 1024 / 1024), 2) + " МБ";
+            //Download_Bar.Value = Convert.ToInt32(e.BytesReceived);
+            //bites_counter.Text = Math.Round(((float)Download_Bar.Value / 1024 / 1024), 2) + " / " + Math.Round(((float)Download_Bar.Maximum / 1024 / 1024), 2) + " МБ";
         }
 
 
