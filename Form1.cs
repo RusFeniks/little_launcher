@@ -19,6 +19,7 @@ namespace NORMLauncher
         string Game_Folder = Application.StartupPath;
         int db_animframe = 1;
 
+        string fileName = "";
 
 
         public MainForm()
@@ -33,21 +34,31 @@ namespace NORMLauncher
 
         }
 
+        private void LD_Button_Click(object sender, EventArgs e)
+        {
+            DownLoad_File("https://www.dropbox.com/s/54x99osl0sl6i5x/Launcher_Updater.exe?dl=1", "Launcher_Updater.exe", "launcher_update");
+        }
+
+        private void YT_Button_Click(object sender, EventArgs e)
+        {
+            Uri YT_Link = new Uri("https://www.youtube.com/user/NTSDCentral");
+            Process.Start(YT_Link.ToString());
+        }
+
         private void VK_Button_Click(object sender, EventArgs e)
         {
-            Uri VK_Link = new Uri("https://vk.com/atom_tm");
+            Uri VK_Link = new Uri("https://discord.gg/BPkYKDD");
             Process.Start(VK_Link.ToString());
         }
 
         public void Folder_Button_Click(object sender, EventArgs e)
         {
-                Process.Start(Game_Folder + "\\game");
+                Process.Start(Game_Folder + "\\NTSDZ");
         }
 
         private void MoveList_Button_Click(object sender, EventArgs e)
         {
-            Form2 form = new Form2();
-            form.ShowDialog();
+            Process.Start(Game_Folder + "\\NTSDZ\\movelist.txt");
         }
 
         private void Update_Button_Click(object sender, EventArgs e)
@@ -111,7 +122,7 @@ namespace NORMLauncher
                 File.Delete("version");
             }
 
-            if (Directory.Exists(Game_Folder + "\\game"))
+            if (Directory.Exists(Game_Folder + "\\NTSDZ"))
             {
                 Folder_Button.Enabled = true;
             }
@@ -120,7 +131,7 @@ namespace NORMLauncher
                 Folder_Button.Enabled = false;
             }
 
-            if (File.Exists(Game_Folder + "\\game\\start.exe"))
+            if (File.Exists(Game_Folder + "\\NTSDZ\\NTSDZ.exe"))
             {
                 Start_Button.Enabled = true;
             }
@@ -129,7 +140,7 @@ namespace NORMLauncher
                 Start_Button.Enabled = false;
             }
 
-            if (File.Exists(Game_Folder + "\\movelist\\index.html"))
+            if (File.Exists(Game_Folder + "\\NTSDZ\\movelist.txt"))
             {
                 MoveList_Button.Enabled = true;
             }
@@ -155,11 +166,15 @@ namespace NORMLauncher
 
             if (Connection)
             {
+                LD_Button.Enabled = true;
                 VK_Button.Enabled = true;
+                YT_Button.Enabled = true;
             }
             else
             {
+                LD_Button.Enabled = false;
                 VK_Button.Enabled = false;
+                YT_Button.Enabled = false;
             }
 
             if (List_of_references != null)
@@ -184,6 +199,7 @@ namespace NORMLauncher
         private void DownLoad_File(string download_url, string file_name = null, string dt = null)
         {
             download_type = dt;
+            fileName = file_name;
 
             try
             {
@@ -208,13 +224,13 @@ namespace NORMLauncher
                     DownLoad.DownloadFileCompleted += new AsyncCompletedEventHandler(DownLoad_Completed);
                 } else
                 {
-                    MessageBox.Show("Файла кажись несуществует :\\");
+                    MessageBox.Show("File doesn't exist");
                     timer2.Stop();
-                    bites_counter.Text = "Error! :C";
+                    bites_counter.Text = "Error!";
                 }
             } catch
             {
-                MessageBox.Show("Во время скачивания взникла ошибка. Попробуйте перезапустить лаунчер.");
+                MessageBox.Show("An error occurred while downloading. Try restarting the launcher.");
                 Check_All();
             }
             
@@ -230,6 +246,10 @@ namespace NORMLauncher
 
                 switch (download_type)
                 {
+                        case "launcher_update":
+                            Process.Start(fileName);
+                            Application.Exit();
+                            break;
                     case "updates_list":
                         List_of_references = Creating_an_update_list();
                         Check_All();
@@ -248,7 +268,7 @@ namespace NORMLauncher
                 }
             } else
             {
-                MessageBox.Show("Во время скачивания взникла ошибка. Попробуйте перезапустить лаунчер.");
+                MessageBox.Show("An error occurred while downloading. Try restarting the launcher.");
                 Check_All();
             }
         }
@@ -310,8 +330,8 @@ namespace NORMLauncher
         {
 
             Process proc = new System.Diagnostics.Process();
-            proc.StartInfo.FileName = Game_Folder + "\\game\\start.exe";
-            proc.StartInfo.WorkingDirectory = Game_Folder + "\\game\\";
+            proc.StartInfo.FileName = Game_Folder + "\\NTSDZ\\NTSDZ.exe";
+            proc.StartInfo.WorkingDirectory = Game_Folder + "\\NTSDZ\\";
             proc.Start();
             Application.Exit();
         }
@@ -328,8 +348,18 @@ namespace NORMLauncher
 
             if (Check_All())
             {
-               DownLoad_File("https://www.dropbox.com/s/ty1eypfbm2nmbnt/updates.xml?dl=1", "updates.xml", "updates_list");
+                DownLoad_File("https://www.dropbox.com/s/egu9ycndf8crbz6/updates.xml?dl=1", "updates.xml", "updates_list");
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
